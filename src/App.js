@@ -1,19 +1,34 @@
 import React from "react";
-//Importamos la aplicación/credenciales
+import  Container  from "react-bootstrap/Container";
+
 import firebaseApp from "./firebase/credenciales";
 
-// Conforme se necesite, importar los demás servicios y funciones. Por ejemplo:
+import Home from "./views/Home";
+import Login from "./views/Login";
 
-/* import { getAuth, onAuthStateChanged } from "firebase/auth";
-const auth = getAuth(firebaseApp); */
+
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+const auth = getAuth(firebaseApp); 
+
 
 function App() {
-  return (
-    <div>
-      <p style={{ color: "black" }}>Hola</p>
-      <button> ¡Buenas!</button>
-    </div>
-  );
+
+  const [usuario, setUsuario] = React.useState(null);
+
+onAuthStateChanged (auth, (usuarioFirebase) => {
+
+  if(usuarioFirebase){
+    setUsuario(usuarioFirebase);
+  }else{
+    setUsuario(null);
+  }
+
+})
+
+
+  return <Container fluid> {usuario ? <Home/> : <Login />}
+  </Container>;
 }
 
 export default App;
