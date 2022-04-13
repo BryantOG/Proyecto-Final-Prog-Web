@@ -4,19 +4,26 @@ import {Container, Stack, Button, Form, Table} from "react-bootstrap";
 import getAllTrailers from "../functions/getAllTrailer";
 import eliminarTrailerHome from "../functions/eliminarTrailerHome";
 
-
 import ModalAñadir from "../components/ModalAñadir";
 import ModalEditar from "../components/ModalEditar";
+import filtrarDatos from "../functions/filtrarDatos";
 
 
 
 
-function GestionTrailers(){
+function GestionTrailers({usuario}){
     
     const [Trailers, setTrailers] = React.useState([]);
     const [isModalAñadir, setIsModalAñadir] = React.useState(false);
     const [isModalEditar, setIsModalEditar] = React.useState(false);
+    const [trailerEditar, setTrailerEditar] = React.useState(null);
 
+    async function busquedaFormHandler(e){
+        e.preventDefault();
+        const busqueda = e.target.busqueda.value;
+        const nuevosDocus = await filtrarDatos(busqueda);
+        setTrailers(nuevosDocus);
+    }
     
     function actualizarEstadoTrilers(){
         getAllTrailers().then((Trailers) => {
@@ -24,7 +31,7 @@ function GestionTrailers(){
         });
     }
 
-    function añadirTrailerHome(){
+    function añadirTrailerGestionTrailers(){
         setIsModalAñadir(true);
     }
 
@@ -41,12 +48,17 @@ function GestionTrailers(){
                 setIsModalAñadir = {setIsModalAñadir}
                 actualizarEstadoTrilers={actualizarEstadoTrilers}
             />
+            
+            {trailerEditar && (
+                <ModalEditar
+                    isModalEditar={isModalEditar}
+                    setIsModalEditar = {setIsModalEditar}
+                    actualizarEstadoTrilers= {actualizarEstadoTrilers}
+                    trailerEditar = {trailerEditar}
+                    setTrailerEditar = {setTrailerEditar}
+                />
+            )}
 
-            <ModalEditar
-                isModalEditar={isModalEditar}
-                setIsModaEditar = {setIsModalEditar}
-                actualizarEstadoTrilers = {actualizarEstadoTrilers}
-            />
 
             <Stack direction="horizontal" className="justify-content-between">
                 <h2>REGISTRO DE TRAILERS</h2>
@@ -56,9 +68,9 @@ function GestionTrailers(){
             </Stack>
             <hr/>
 
-            <Form>
+            <Form onSubmit={busquedaFormHandler}>
                 <Stack direction="horizontal">
-                    <Form.Group controlId="busqueda de trailer" className="w-75 m-3">
+                    <Form.Group controlId="busqueda" className="w-75 m-3">
                         <Form.Control type="text" placeholder="Buscar"></Form.Control>
                     </Form.Group>
                     <Button variant="dark" type="submit">
@@ -92,9 +104,11 @@ function GestionTrailers(){
                             <td>{Trailers.Portada}</td>
                             <td>
                                 <Button variant="dark" onClick={() =>
-                                setIsModalEditar(true)}>
-                                    
-
+                                    {
+                                        setIsModalEditar(true);
+                                        setTrailerEditar({...Trailers});
+                                    }
+                                    }>
                                     Editar
                                 </Button>
                                 <Button variant="danger" onClick={() => {
@@ -115,10 +129,10 @@ function GestionTrailers(){
                     
                 </tbody>
             </Table>
-            <Button onClick={añadirTrailerHome}>
+            <Button onClick={añadirTrailerGestionTrailers}>
                 Añadir Trailer
 
-            </Button>
+            </Button>          
 
 
 
