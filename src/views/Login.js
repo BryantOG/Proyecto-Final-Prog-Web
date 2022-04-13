@@ -1,15 +1,19 @@
 import React from "react";
 import {Container, Form, Button} from "react-bootstrap";
 import loginEmailPassword from "../functions/loginEmailPassword";
+import { useNavigate } from 'react-router-dom';
 
-function Login(){
+function Login() {
 
-async function submitHandler(e){
-    e.preventDefault();
-    const correo = document.getElementById("formCorreo").value;
-    const contraseña = e.target.formContraseña.value;
-    await loginEmailPassword(correo,contraseña);
-}
+    const navigateTo = useNavigate();
+
+    async function submitHandler(e){
+        e.preventDefault();
+        const correo = document.getElementById("formCorreo").value;
+        const contraseña = e.target.formContraseña.value;
+        await loginEmailPassword(correo, contraseña)
+            .then(() => navigateTo('/trailers'));
+    }
 
     
     return(

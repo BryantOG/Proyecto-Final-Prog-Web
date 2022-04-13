@@ -11,7 +11,7 @@ import ModalEditar from "../components/ModalEditar";
 
 
 
-function Home(){
+function GestionTrailers(){
     
     const [Trailers, setTrailers] = React.useState([]);
     const [isModalAñadir, setIsModalAñadir] = React.useState(false);
@@ -129,4 +129,4 @@ function Home(){
 
 }
 
-export default Home;
+export default GestionTrailers;
