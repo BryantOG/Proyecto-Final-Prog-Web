@@ -1,11 +1,12 @@
 import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import  Container  from "react-bootstrap/Container";
 
 import firebaseApp from "./firebase/credenciales";
 
-import Home from "./views/Home";
+import GestionTrailers from "./views/GestionTrailers";
 import Login from "./views/Login";
-
+import Movies from "./views/Movies";
 
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -27,8 +28,15 @@ onAuthStateChanged (auth, (usuarioFirebase) => {
 })
 
 
-  return <Container fluid> {usuario ? <Home/> : <Login />}
-  </Container>;
+  return (
+    <Container fluid>
+      <Routes>
+        <Route path="/" element={<Movies />} />
+        <Route path="login" element={<Login />} />
+        <Route path="trailers" element={usuario ? <GestionTrailers /> : <Navigate to="/login" />}/>
+      </Routes>
+    </Container>
+  )
 }
 
 export default App;

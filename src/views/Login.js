@@ -1,15 +1,26 @@
 import React from "react";
 import {Container, Form, Button} from "react-bootstrap";
 import loginEmailPassword from "../functions/loginEmailPassword";
+import { useNavigate } from 'react-router-dom';
+import firebaseApp from "../firebase/credenciales";
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
 
-function Login(){
+const auth = getAuth(firebaseApp);
 
-async function submitHandler(e){
-    e.preventDefault();
-    const correo = document.getElementById("formCorreo").value;
-    const contraseña = e.target.formContraseña.value;
-    await loginEmailPassword(correo,contraseña);
-}
+
+function Login() {
+
+    const navigateTo = useNavigate();
+
+    async function submitHandler(e){
+        e.preventDefault();
+        const correo = document.getElementById("formCorreo").value;
+        const contraseña = e.target.formContraseña.value;
+        await signInWithEmailAndPassword(auth, correo, contraseña)
+        .then(() => navigateTo('/trailers'))
+        .catch(() => alert("Contraseña incorrecta"));
+        
+    }
 
     
     return(

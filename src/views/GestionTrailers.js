@@ -11,7 +11,7 @@ import filtrarDatos from "../functions/filtrarDatos";
 
 
 
-function Home({usuario}){
+function GestionTrailers({usuario}){
     
     const [Trailers, setTrailers] = React.useState([]);
     const [isModalAñadir, setIsModalAñadir] = React.useState(false);
@@ -31,7 +31,7 @@ function Home({usuario}){
         });
     }
 
-    function añadirTrailerHome(){
+    function añadirTrailerGestionTrailers(){
         setIsModalAñadir(true);
     }
 
@@ -129,7 +129,7 @@ function Home({usuario}){
                     
                 </tbody>
             </Table>
-            <Button onClick={añadirTrailerHome}>
+            <Button onClick={añadirTrailerGestionTrailers}>
                 Añadir Trailer
 
             </Button>          
@@ -143,4 +143,4 @@ function Home({usuario}){
 
 }
 
-export default Home;
+export default GestionTrailers;
