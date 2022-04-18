@@ -1,12 +1,15 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import  Container  from "react-bootstrap/Container";
+import "./styles/app.css"
+
 
 import firebaseApp from "./firebase/credenciales";
 
 import GestionTrailers from "./views/GestionTrailers";
 import Login from "./views/Login";
-import Movies from "./views/Movies";
+import Movies from "./views/Movies"
+
 
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";

@@ -1,6 +1,6 @@
 import React from "react";
 import cerrarSesion from "../functions/cerrarSesion";
-import {Container, Stack, Button, Form, Table} from "react-bootstrap";
+import { Container, Stack, Button, Form, Table } from "react-bootstrap";
 import getAllTrailers from "../functions/getAllTrailer";
 import eliminarTrailerHome from "../functions/eliminarTrailerHome";
 
@@ -11,51 +11,51 @@ import filtrarDatos from "../functions/filtrarDatos";
 
 
 
-function GestionTrailers({usuario}){
-    
+function GestionTrailers({ usuario }) {
+
     const [Trailers, setTrailers] = React.useState([]);
     const [isModalAñadir, setIsModalAñadir] = React.useState(false);
     const [isModalEditar, setIsModalEditar] = React.useState(false);
     const [trailerEditar, setTrailerEditar] = React.useState(null);
 
-    async function busquedaFormHandler(e){
+    async function busquedaFormHandler(e) {
         e.preventDefault();
         const busqueda = e.target.busqueda.value;
         const nuevosDocus = await filtrarDatos(busqueda);
         setTrailers(nuevosDocus);
     }
-    
-    function actualizarEstadoTrilers(){
+
+    function actualizarEstadoTrilers() {
         getAllTrailers().then((Trailers) => {
             setTrailers(Trailers);
         });
     }
 
-    function añadirTrailerGestionTrailers(){
+    function añadirTrailerGestionTrailers() {
         setIsModalAñadir(true);
     }
 
-    React.useEffect(() =>{
+    React.useEffect(() => {
         actualizarEstadoTrilers();
 
-    },[])
+    }, [])
 
 
-    return(
+    return (
         <Container fluid>
             <ModalAñadir
-                isModalAñadir = {isModalAñadir}
-                setIsModalAñadir = {setIsModalAñadir}
+                isModalAñadir={isModalAñadir}
+                setIsModalAñadir={setIsModalAñadir}
                 actualizarEstadoTrilers={actualizarEstadoTrilers}
             />
-            
+
             {trailerEditar && (
                 <ModalEditar
                     isModalEditar={isModalEditar}
-                    setIsModalEditar = {setIsModalEditar}
-                    actualizarEstadoTrilers= {actualizarEstadoTrilers}
-                    trailerEditar = {trailerEditar}
-                    setTrailerEditar = {setTrailerEditar}
+                    setIsModalEditar={setIsModalEditar}
+                    actualizarEstadoTrilers={actualizarEstadoTrilers}
+                    trailerEditar={trailerEditar}
+                    setTrailerEditar={setTrailerEditar}
                 />
             )}
 
@@ -66,7 +66,7 @@ function GestionTrailers({usuario}){
                     Cerrar sesión
                 </Button>
             </Stack>
-            <hr/>
+            <hr />
 
             <Form onSubmit={busquedaFormHandler}>
                 <Stack direction="horizontal">
@@ -86,14 +86,14 @@ function GestionTrailers({usuario}){
                 <thead>
                     <th>Titulo</th>
                     <th>Clasificacion</th>
-                    <th>Duracion</th>
+                    <th>Genero</th>
                     <th>Año</th>
                     <th>Reseña</th>
                     <th>Link del trailes</th>
-                    <th>Imagen de protada</th>
+                    <th>Actores</th>
                 </thead>
                 <tbody>
-                    {Trailers && Trailers.map((Trailers) =>(
+                    {Trailers && Trailers.map((Trailers) => (
                         <tr>
                             <td>{Trailers.Titulo}</td>
                             <td>{Trailers.Clasificacion}</td>
@@ -103,12 +103,11 @@ function GestionTrailers({usuario}){
                             <td>{Trailers.Trailer}</td>
                             <td>{Trailers.Portada}</td>
                             <td>
-                                <Button variant="dark" onClick={() =>
-                                    {
-                                        setIsModalEditar(true);
-                                        setTrailerEditar({...Trailers});
-                                    }
-                                    }>
+                                <Button variant="dark" onClick={() => {
+                                    setIsModalEditar(true);
+                                    setTrailerEditar({ ...Trailers });
+                                }
+                                }>
                                     Editar
                                 </Button>
                                 <Button variant="danger" onClick={() => {
@@ -117,22 +116,22 @@ function GestionTrailers({usuario}){
                                             actualizarEstadoTrilers();
                                         }
                                     );
-                                    
-                                    }}> 
+
+                                }}>
                                     Eliminar
                                 </Button>
                             </td>
 
                         </tr>
 
-                    ))}                           
-                    
+                    ))}
+
                 </tbody>
             </Table>
             <Button onClick={añadirTrailerGestionTrailers}>
                 Añadir Trailer
 
-            </Button>          
+            </Button>
 
 
 

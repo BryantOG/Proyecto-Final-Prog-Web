@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+h3{
+    background-color: rgb(34, 44, 52);
+    
+}
+
+
+h6{
+    color: rgb(34, 44, 52);
+}
+
+.formulario{
+    background-color: rgb(34, 44, 52);
+    padding: 8%;
+    border-radius: 8%;
+    box-shadow: 5 15px 15px hsl(0deg 0% 0% / 0.3);
+
+}
+
+
+Form label{
+    color: white;
+}
+
+img{
+  width: 20%; 
+  margin-left: 40%;
+}
