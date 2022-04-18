@@ -1,20 +1,20 @@
 import React from "react";
-import {Modal, Stack, Form, Button} from "react-bootstrap";
+import { Modal, Stack, Form, Button } from "react-bootstrap";
 import añadirTrailer from "../functions/AñadirTrailers";
 
 
-function ModalEditar({isModalEditar, setIsModalEditar, actualizarEstadoTrilers, trailerEditar, setTrailerEditar}){
-    
-    function editarTrailerModal(){
-        const Titulo =document.getElementById("Titulo").value;
-        const Clasificacion =document.getElementById("Clasificacion").value;
-        const Duracion =document.getElementById("Duracion").value;
-        const Año =document.getElementById("Año").value;
-        const Reseña =document.getElementById("Reseña").value;
-        const Trailer =document.getElementById("Trailer").value;
-        const Portada =document.getElementById("Portada").value;
+function ModalEditar({ isModalEditar, setIsModalEditar, actualizarEstadoTrilers, trailerEditar, setTrailerEditar }) {
 
-        const infoTrailer= {Titulo, Clasificacion, Duracion, Año, Reseña, Trailer, Portada};
+    function editarTrailerModal() {
+        const Titulo = document.getElementById("Titulo").value;
+        const Clasificacion = document.getElementById("Clasificacion").value;
+        const Duracion = document.getElementById("Duracion").value;
+        const Año = document.getElementById("Año").value;
+        const Reseña = document.getElementById("Reseña").value;
+        const Trailer = document.getElementById("Trailer").value;
+        const Portada = document.getElementById("Portada").value;
+
+        const infoTrailer = { Titulo, Clasificacion, Duracion, Año, Reseña, Trailer, Portada };
         añadirTrailer(infoTrailer);
 
         setTrailerEditar(null);
@@ -23,16 +23,16 @@ function ModalEditar({isModalEditar, setIsModalEditar, actualizarEstadoTrilers, 
     }
 
     const [trailersEstado, setTrailersEstado] = React.useState({
-       ...trailerEditar
+        ...trailerEditar
     });
 
     return (
-        <Modal 
-            show ={isModalEditar} 
-            onHide = {() =>{ 
+        <Modal
+            show={isModalEditar}
+            onHide={() => {
                 setIsModalEditar(false);
                 setTrailerEditar(null);
-        
+
             }}
         >
 
@@ -42,118 +42,118 @@ function ModalEditar({isModalEditar, setIsModalEditar, actualizarEstadoTrilers, 
             <Modal.Body>
                 <Form>
                     <Stack>
-                        <Form.Control  
-                            id ="Titulo"  
-                            placeholder ="Titulo" 
-                            type = "text" 
+                        <Form.Control
+                            id="Titulo"
+                            placeholder="Titulo"
+                            type="text"
                             className="mb-1"
-                            value= {trailersEstado?.Titulo}
-                            onChange = {(e) => 
+                            value={trailersEstado?.Titulo}
+                            onChange={(e) =>
                                 setTrailersEstado({
                                     ...trailerEditar,
                                     Titulo: e.target.value,
                                 })
-                            }    
+                            }
                         />
-                        <Form.Control  
-                            id ="Clasificacion"  
-                            placeholder ="Clasificacion" 
-                            type = "text" 
+                        <Form.Control
+                            id="Clasificacion"
+                            placeholder="Clasificacion"
+                            type="text"
                             className="mb-1"
-                            value= {trailersEstado?.Clasificacion}
-                            onChange = {(e) => 
+                            value={trailersEstado?.Clasificacion}
+                            onChange={(e) =>
                                 setTrailersEstado({
                                     ...trailerEditar,
-                                   Clasificacion: e.target.value,
+                                    Clasificacion: e.target.value,
                                 })
-                            }    
+                            }
                         />
-                        <Form.Control  
-                            id ="Duracion"  
-                            placeholder ="Duracion" 
-                            type="text" 
+                        <Form.Control
+                            id="Duracion"
+                            placeholder="Genero"
+                            type="text"
                             className="mb-1"
-                            value= {trailersEstado?.Duracion}
-                            onChange = {(e) => 
+                            value={trailersEstado?.Duracion}
+                            onChange={(e) =>
                                 setTrailersEstado({
                                     ...trailerEditar,
                                     Duracion: e.target.value,
                                 })
-                            }    
+                            }
                         />
-                        <Form.Control  
-                            id ="Año"  
-                            placeholder ="Año" 
-                            type="text" 
+                        <Form.Control
+                            id="Año"
+                            placeholder="Año"
+                            type="text"
                             className="mb-1"
-                            value= {trailersEstado?.Año}
-                            onChange = {(e) => 
+                            value={trailersEstado?.Año}
+                            onChange={(e) =>
                                 setTrailersEstado({
                                     ...trailerEditar,
                                     Año: e.target.value,
                                 })
-                            }    
+                            }
                         />
-                        <Form.Control  
-                            id ="Reseña"  
-                            placeholder ="Reseña" 
-                            type ="text" 
+                        <Form.Control
+                            id="Reseña"
+                            placeholder="Reseña"
+                            type="text"
                             className="mb-1"
-                            value= {trailersEstado?.Reseña}
-                            onChange = {(e) => 
+                            value={trailersEstado?.Reseña}
+                            onChange={(e) =>
                                 setTrailersEstado({
                                     ...trailerEditar,
                                     Reseña: e.target.value,
                                 })
-                            }    
+                            }
                         />
-                        <Form.Control  
-                            id ="Trailer"  
-                            placeholder ="Link del trailer" 
-                            type="text" 
+                        <Form.Control
+                            id="Trailer"
+                            placeholder="Link del trailer"
+                            type="text"
                             className="mb-1"
-                            value= {trailersEstado?.Trailer}
-                            onChange = {(e) => 
+                            value={trailersEstado?.Trailer}
+                            onChange={(e) =>
                                 setTrailersEstado({
                                     ...trailerEditar,
                                     Trailer: e.target.value,
                                 })
-                            }    
+                            }
                         />
-                        <Form.Control  
-                            id ="Portada"  
-                            placeholder ="Imagen de portada" 
-                            type="text" 
+                        <Form.Control
+                            id="Portada"
+                            placeholder="Actor principal"
+                            type="text"
                             className="mb-1"
-                            value= {trailersEstado?.Portada}
-                            onChange = {(e) => 
+                            value={trailersEstado?.Portada}
+                            onChange={(e) =>
                                 setTrailersEstado({
                                     ...trailerEditar,
                                     Portada: e.target.value,
                                 })
-                            }    
+                            }
                         />
                     </Stack>
-                </Form>    
-                
-            </Modal.Body>   
+                </Form>
+
+            </Modal.Body>
             <Modal.Footer>
-                <Button 
-                    variant="secondary" 
-                    onClick = {() =>{
+                <Button
+                    variant="secondary"
+                    onClick={() => {
                         setIsModalEditar(false);
                         setTrailerEditar(null);
                     }}
                 >
                     Cancelar
                 </Button>
-                <Button variant = "primary" onClick={editarTrailerModal}>
+                <Button variant="primary" onClick={editarTrailerModal}>
                     Editar
                 </Button>
-            </Modal.Footer>  
+            </Modal.Footer>
 
-        </Modal>  
-        
+        </Modal>
+
     );
 }
 

@@ -32,11 +32,11 @@ function ModalAñadir({isModalAñadir, setIsModalAñadir, actualizarEstadoTriler
                     <Stack>
                         <Form.Control  id ="Titulo"  placeholder ="Titulo" type = "text" className="mb-1"/>
                         <Form.Control  id ="Clasificacion"  placeholder ="Clasificacion" type = "text" className="mb-1"/>
-                        <Form.Control  id ="Duracion"  placeholder ="Duracion" type="text" className="mb-1"/>
+                        <Form.Control  id ="Duracion"  placeholder ="Genero" type="text" className="mb-1"/>
                         <Form.Control  id ="Año"  placeholder ="Año" type="text" className="mb-1"/>
                         <Form.Control  id ="Reseña"  placeholder ="Reseña" type ="text" className="mb-1"/>
                         <Form.Control  id ="Trailer"  placeholder ="Link del trailer" type="text" className="mb-1"/>
-                        <Form.Control  id ="Portada"  placeholder ="Imagen de portada" type="text" className="mb-1"/>
+                        <Form.Control  id ="Portada"  placeholder ="Actor principal" type="text" className="mb-1"/>
                     </Stack>
                 </Form>    
                 
