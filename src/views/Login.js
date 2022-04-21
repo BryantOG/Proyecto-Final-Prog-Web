@@ -18,17 +18,23 @@ function Login() {
         const contraseña = e.target.formContraseña.value;
         await signInWithEmailAndPassword(auth, correo, contraseña)
             .then(() => navigateTo('/trailers'))
-            .catch(() => alert("Contraseña incorrecta"));
+            .catch(() => { 
+                if (correo === "" || contraseña === "") return alert("Llene los campos vacíos!")
+                return alert("Usuario o contraseña incorrecta");
+            })
 
     }
 
-
     return (
-        <Container className="container">
+        <Container className="container font custombg">
             <h3 className="shadow-sm text-white mt-2 p-3 text-center rounded">Admin Login</h3>
-            <Row className="mt-5">
+            <Row className="mt-5 borderTop">
                 <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
                     <Form onSubmit={submitHandler}>
+                        
+                        <Container className="container d-flex justify-content-center">
+                          <h4> Gestión de Trailers </h4> 
+                        </Container>
 
                         <Form.Group controlId="formCorreo">
                             <Form.Label>Correo electronico</Form.Label>
@@ -40,7 +46,7 @@ function Login() {
                             <Form.Control type="password" placeholder="Ingrese su contraseña" />
                         </Form.Group>
 
-                        <Button variant="primary btn-block" type="submit">
+                        <Button variant="primary btn-block w-100 mt-4" type="submit">
                             Login
                         </Button>
                     </Form>
