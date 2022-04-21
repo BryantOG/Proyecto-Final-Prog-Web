@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/gestion-trailers.css'
 import cerrarSesion from "../functions/cerrarSesion";
 import { Container, Stack, Button, Form, Table } from "react-bootstrap";
 import getAllTrailers from "../functions/getAllTrailer";
@@ -82,7 +83,7 @@ function GestionTrailers({ usuario }) {
                 </Stack>
             </Form>
 
-            <Table>
+            <Table bordered responsive>
                 <thead>
                     <th>Titulo</th>
                     <th>Clasificacion</th>

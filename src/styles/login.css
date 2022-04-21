@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-body{
+.font{
     font-family: 'Open Sans', sans-serif;
+}
+
+.custombg {
+    
 }
 
 h3{
@@ -29,4 +33,9 @@ Form label{
 img{
   width: 20%; 
   margin-left: 40%;
+}
+
+
+.borderTop {
+    border: 10px;
 }
