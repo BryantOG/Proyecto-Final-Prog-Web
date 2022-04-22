@@ -28,8 +28,8 @@ const Movies = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-
+ 
+  
   return (
 
     <div className="principal">
@@ -105,8 +105,7 @@ const Movies = () => {
                             <li><b>Titulo:</b>  {Trailer.Titulo}</li>
                             <li><b>Actores Principales:</b> {Trailer.Portada}</li>
                             <li><b>Clasificacion:</b> {Trailer.Clasificacion}</li>
-                            <li><b>Duracion:</b> {Trailer.Duracion}</li>
-                            <li><b>Genero:</b> {Trailer.Genero}</li>
+                            <li><b>Genero:</b> {Trailer.Duracion}</li>
                             <li><b>Año:</b> {Trailer.Año}</li>
                             <li><b>Sipnosis:</b> {Trailer.Reseña}</li>
                           </ul>

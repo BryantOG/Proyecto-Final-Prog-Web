@@ -5,6 +5,7 @@ import añadirTrailer from "../functions/AñadirTrailers";
 function ModalAñadir({isModalAñadir, setIsModalAñadir, actualizarEstadoTrilers}){
     
     function añadirTrailerModal(){
+        
         const Titulo =document.getElementById("Titulo").value;
         const Clasificacion =document.getElementById("Clasificacion").value;
         const Duracion =document.getElementById("Duracion").value;
@@ -12,13 +13,22 @@ function ModalAñadir({isModalAñadir, setIsModalAñadir, actualizarEstadoTriler
         const Reseña =document.getElementById("Reseña").value;
         const Trailer =document.getElementById("Trailer").value;
         const Portada =document.getElementById("Portada").value;
-
+        
+        if(Titulo === '')return alert("Campo del Titulo vacio");
+        if(Clasificacion === '')return alert("Campo de clasificacion vacio");
+        if(Duracion === '')return alert("Campo de Genero vacio");
+        if(Año === '')return alert("Campo de Año vacio");
+        if(Reseña === '')return alert("Campo de Reseña vacio");
+        if(Trailer === '')return alert("Campo de Trailer vacio");
+        if(Portada === '')return alert("Campo de actores vacio");
+        
         const infoTrailer= {Titulo, Clasificacion, Duracion, Año, Reseña, Trailer, Portada};
         añadirTrailer(infoTrailer);
 
         actualizarEstadoTrilers();
         setIsModalAñadir(false);
     }
+
 
     return (
         <Modal show ={isModalAñadir} onHide = {() => setIsModalAñadir
@@ -38,6 +48,8 @@ function ModalAñadir({isModalAñadir, setIsModalAñadir, actualizarEstadoTriler
                         <Form.Control  id ="Trailer"  placeholder ="Link del trailer" type="text" className="mb-1"/>
                         <Form.Control  id ="Portada"  placeholder ="Actor principal" type="text" className="mb-1"/>
                     </Stack>
+                                     
+                    
                 </Form>    
                 
             </Modal.Body>   
@@ -49,9 +61,10 @@ function ModalAñadir({isModalAñadir, setIsModalAñadir, actualizarEstadoTriler
                 <Button variant = "primary" onClick={añadirTrailerModal}> Añadir</Button>
             </Modal.Footer>  
 
-        </Modal>  
+        </Modal>   
         
     );
+    
 }
 
 export default ModalAñadir;
