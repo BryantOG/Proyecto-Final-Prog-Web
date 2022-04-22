@@ -40,7 +40,7 @@ function GestionTrailers({ usuario }) {
         actualizarEstadoTrilers();
 
     }, [])
-
+    
 
     return (
         <Container fluid>
@@ -48,6 +48,7 @@ function GestionTrailers({ usuario }) {
                 isModalAñadir={isModalAñadir}
                 setIsModalAñadir={setIsModalAñadir}
                 actualizarEstadoTrilers={actualizarEstadoTrilers}
+                
             />
 
             {trailerEditar && (
